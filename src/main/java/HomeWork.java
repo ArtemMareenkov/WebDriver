@@ -31,7 +31,7 @@ public class HomeWork {
 
         WebElement username = driver.findElement(By.id("ff14642ac1c__us_login"));
         username.sendKeys(RandomStringUtils.random(10, true, true));
-        System.out.println(username.getText());
+        //System.out.println(username.getText());
 
         WebElement userpassword = driver.findElement(By.id("ff14642ac1c__us_password"));
         userpassword.sendKeys("dghr54hf");
