@@ -29,33 +29,35 @@ public class HomeWork {
 
         driver.findElement(By.id("")).click();
 
+        String u = RandomStringUtils.random(12, true, true); // ramdom user name generate
         WebElement username = driver.findElement(By.id("ff14642ac1c__us_login"));
-        username.sendKeys(RandomStringUtils.random(10, true, true));
+        username.sendKeys(u);
         //System.out.println(username.getText());
 
+        String p = RandomStringUtils.random(12, true, true);
         WebElement userpassword = driver.findElement(By.id("ff14642ac1c__us_password"));
-        userpassword.sendKeys("dghr54hf");
+        userpassword.sendKeys(p);
 
         WebElement userpasswordconfirm = driver.findElement(By.id("ff14642ac1c__confirm_password"));
-        userpasswordconfirm.sendKeys("dghr54hf");
+        userpasswordconfirm.sendKeys(p);
 
         WebElement useremail = driver.findElement(By.id("ff14642ac1c__us_email"));
-        useremail.sendKeys("trtr@mai.ru");
+        useremail.sendKeys(RandomStringUtils.random(10, true, true)"@gmail.com");
 
         WebElement FirstName = driver.findElement(By.id("ff14642ac1c__us_fname"));
-        FirstName.sendKeys("Grtfhgkj");
+        FirstName.sendKeys((RandomStringUtils.random(10, true, false));
 
         WebElement LastName = driver.findElement(By.id("ff14642ac1c__us_lname"));
-        LastName.sendKeys("TR454t");
+        LastName.sendKeys((RandomStringUtils.random(10, true, false);
 
         WebElement City = driver.findElement(By.id("ff14642ac1c__us_city"));
-        City.sendKeys("Town");
+        City.sendKeys((RandomStringUtils.random(10, true, false);
 
         WebElement Address = driver.findElement(By.id(""));
-        Address.sendKeys("Tbt7645bhh");
+        Address.sendKeys((RandomStringUtils.random(10, true, true));
 
         WebElement PhoneNumber = driver.findElement(By.id(""));
-        PhoneNumber.sendKeys("089785678459560");
+        PhoneNumber.sendKeys((RandomStringUtils.random(10, false, true));
 
         driver.findElement(By.name("button_save")); //save button click
 
@@ -64,6 +66,9 @@ public class HomeWork {
         assertString(ActualResult, ExpectedResult);
 
         WebElement usersearch = driver.findElement(By.id(""));
+        usersearch.sendKeys(u);
+
+
 
         driver.quit();
 
