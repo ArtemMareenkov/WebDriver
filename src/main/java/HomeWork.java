@@ -14,7 +14,7 @@ public class HomeWork {
         //open Browser
         WebDriver driver = new FirefoxDriver();
         //open website
-        driver.get("https://80.92.229:81/auth/login");
+        driver.get("http://80.92.229.236:81/auth/login");
         //Login field find
         WebElement loginInput = driver.findElement(By.id("username"));
         // login enter
@@ -27,15 +27,14 @@ public class HomeWork {
         WebElement LoginButton = driver.findElement(By.id("logIn")); // Login button Fiend
         LoginButton.click(); //Login button click
 
-        WebElement insertbutton = driver.findElement(By.id("Will be added")); // insert player button fiend
+        WebElement insertbutton = driver.findElement(By.xpath(".//a[@href='http://80.92.229.236:81/players/insert']/img")); // insert player button fiend
         insertbutton.click();// insert player button click
 
-        String u = RandomStringUtils.random(12, true, true); // ramdom user name generate
+        String u = RandomStringUtils.random(8, true, true); // random user name generate
         WebElement username = driver.findElement(By.id("ff14642ac1c__us_login"));
         username.sendKeys(u);
-        //System.out.println(username.getText());
 
-        String p = RandomStringUtils.random(12, true, true);
+        String p = RandomStringUtils.random(10, true, true);
         WebElement userpassword = driver.findElement(By.id("ff14642ac1c__us_password"));
         userpassword.sendKeys(p);
 
@@ -43,16 +42,16 @@ public class HomeWork {
         userpasswordconfirm.sendKeys(p);
 
         WebElement useremail = driver.findElement(By.id("ff14642ac1c__us_email"));
-        useremail.sendKeys(RandomStringUtils.random(10, true, true)+"@gmail.com");
+        useremail.sendKeys(RandomStringUtils.random(6, true, true)+"@gmail.com");
 
         WebElement FirstName = driver.findElement(By.id("ff14642ac1c__us_fname"));
-        FirstName.sendKeys(RandomStringUtils.random(10, true, false));
+        FirstName.sendKeys(RandomStringUtils.random(6, true, false));
 
         WebElement LastName = driver.findElement(By.id("ff14642ac1c__us_lname"));
-        LastName.sendKeys(RandomStringUtils.random(10, true, false));
+        LastName.sendKeys(RandomStringUtils.random(8, true, false));
 
         WebElement City = driver.findElement(By.id("ff14642ac1c__us_city"));
-        City.sendKeys(RandomStringUtils.random(10, true, false));
+        City.sendKeys(RandomStringUtils.random(9, true, false));
 
         WebElement Address = driver.findElement(By.id("ff14642ac1c__us_address"));
         Address.sendKeys(RandomStringUtils.random(10, true, true));
@@ -60,7 +59,7 @@ public class HomeWork {
         WebElement PhoneNumber = driver.findElement(By.id("ff14642ac1c__us_phone"));
         PhoneNumber.sendKeys(RandomStringUtils.random(10, false, true));
 
-        WebElement SaveButton = driver.findElement(By.name("button_save"));
+        WebElement SaveButton = driver.findElement(By.xpath(".//input[@name=\"button_save\"]"));
          SaveButton.click(); //save button click
 
         String ExpectedResult = "Players";
@@ -101,7 +100,7 @@ public class HomeWork {
 
         String ExpectedResult = FN;
         String ActualResult = FirstName.getAttribute("value");
-        assertString(ActualResult, ExpectedResult);
+        assertString(ActualResult, ExpectedResult);*/
 
         driver.quit();
 
