@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.apache.commons.lang3.RandomStringUtils;
+
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by Artem Mareenkov on 26.11.2016.
  */
@@ -13,6 +16,7 @@ public class HomeWork {
 
         //open Browser
         WebDriver driver = new FirefoxDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //open website
         driver.get("http://80.92.229.236:81/auth/login");
         //Login field find
@@ -25,8 +29,8 @@ public class HomeWork {
         WebElement LoginButton = driver.findElement(By.id("logIn")); // Login button Fiend
         LoginButton.click(); //Login button click
 
-        WebElement insertbutton = driver.findElement(By.xpath(".//a[@href='http://80.92.229.236:81/players/insert']/img")); // insert player button fiend
-        insertbutton.click();// insert player button click
+        WebElement InsertButton = driver.findElement(By.xpath(".//a[@href='http://80.92.229.236:81/players/insert']/img")); // insert player button fiend
+        InsertButton.click();// insert player button click
 
         String u = RandomStringUtils.random(8, true, true); // random user name generate
         WebElement Username = driver.findElement(By.id("ff14642ac1c__us_login"));
@@ -39,23 +43,29 @@ public class HomeWork {
         WebElement userpasswordconfirm = driver.findElement(By.id("ff14642ac1c__confirm_password"));
         userpasswordconfirm.sendKeys(p);
 
+        String m = RandomStringUtils.random(10,true,true);
         WebElement Useremail = driver.findElement(By.id("ff14642ac1c__us_email"));
-        Useremail.sendKeys(RandomStringUtils.random(6, true, true)+"@gmail.com");
+        Useremail.sendKeys(m +"@gmail.com");
 
+        String f = RandomStringUtils.random(7,true,false);
         WebElement FirstName = driver.findElement(By.id("ff14642ac1c__us_fname"));
-        FirstName.sendKeys(RandomStringUtils.random(6, true, false));
+        FirstName.sendKeys(f);
 
+        String l = RandomStringUtils.random(8,true,false);
         WebElement LastName = driver.findElement(By.id("ff14642ac1c__us_lname"));
-        LastName.sendKeys(RandomStringUtils.random(8, true, false));
+        LastName.sendKeys(l);
 
+        String c = RandomStringUtils.random(7,true,false);
         WebElement City = driver.findElement(By.id("ff14642ac1c__us_city"));
-        City.sendKeys(RandomStringUtils.random(9, true, false));
+        City.sendKeys(c);
 
+        String a = RandomStringUtils.random(9,true,true);
         WebElement Address = driver.findElement(By.id("ff14642ac1c__us_address"));
-        Address.sendKeys(RandomStringUtils.random(10, true, true));
+        Address.sendKeys(a);
 
+        String ph = RandomStringUtils.random(11,false,true);
         WebElement PhoneNumber = driver.findElement(By.id("ff14642ac1c__us_phone"));
-        PhoneNumber.sendKeys(RandomStringUtils.random(10, false, true));
+        PhoneNumber.sendKeys(ph);
 
         WebElement SaveButton = driver.findElement(By.xpath(".//input[@name='button_save']"));
         SaveButton.click(); //save button click
@@ -69,7 +79,40 @@ public class HomeWork {
 
         driver.findElement(By.name("search")).click(); //search button click
 
+        driver.findElement(By.xpath(".//td[.//a[text()='" + u + "']]")).click(); // open Players view
+
+        //Check User Mail Field
+        String actualEmailValue = Useremail.getAttribute("value");
+        assertString(actualEmailValue, m + "gmail.com");
+
+        //Check First Name Field
+        String actualFirstNameValue = FirstName.getAttribute("value");
+        assertString(actualFirstNameValue,f);
+
+        //Check Last Name Field
+        String actualLastNameValue = LastName.getAttribute("value");
+        assertString(actualLastNameValue,l);
+
+        //Check City Field
+        String actualCityValue = City.getAttribute("value");
+        assertString(actualCityValue,c);
+
+        //Check Address Field
+        String actualAddressValue = Address.getAttribute("value");
+        assertString(actualAddressValue,a);
+
+        //check Phone Field
+        String actualPhoneValue = PhoneNumber.getAttribute("value");
+        assertString(actualPhoneValue,ph);
+
+        driver.findElement(By.name("button_ok"));
+
+        usersearchfield.sendKeys(u);
+
+        driver.findElement(By.name("search")).click(); //search button click
+
         driver.findElement(By.xpath(".//tr[.//a[text()='" + u + "']]/img[@alt='Edit']")).click(); //Edit button click
+        usersearchfield.sendKeys(u);
 
         String UsM = RandomStringUtils.random(8,true,true);
         Useremail.sendKeys(UsM+"mail.ru");
@@ -92,39 +135,37 @@ public class HomeWork {
         SaveButton.click();
 
         usersearchfield.sendKeys(u);
-        driver.findElement(By.xpath(".//tr[.//a[text()='" + u + "']]/img[@alt='Edit']")).click(); //Edit button click
+        driver.findElement(By.name("search")).click(); //search button click
+
+        driver.findElement(By.xpath(".//td[.//a[text()='" + u + "']]")).click(); // open Players view
 
         //Check User Mail Field
-        driver.findElement(By.id("ff14642ac1c__us_email"));
-        String actualEmailValue = Useremail.getAttribute("value");
-        assertString(actualEmailValue, UsM+"mail.ru");
+        String actualMailValue = Useremail.getAttribute("value");
+        assertString(actualMailValue, UsM+"mail.ru");
 
         //Check First Name Field
-        driver.findElement(By.id("ff14642ac1c__us_fname"));
-        String actualFirstNameValue = FirstName.getAttribute("value");
-        assertString(actualFirstNameValue,FN);
+        String actualfirstNameValue = FirstName.getAttribute("value");
+        assertString(actualfirstNameValue,FN);
 
         //Check Last Name Field
-        driver.findElement(By.id("ff14642ac1c__us_lname"));
-        String actualLastNameValue = LastName.getAttribute("value");
-        assertString(actualLastNameValue,LN);
+        String actuallastNameValue = LastName.getAttribute("value");
+        assertString(actuallastNameValue,LN);
 
         //Check City Field
-        driver.findElement(By.id("ff14642ac1c__us_city"));
-        String actualCityValue = City.getAttribute("value");
-        assertString(actualCityValue,CT);
+        String actualcityValue = City.getAttribute("value");
+        assertString(actualcityValue,CT);
 
         //Check Address Field
-        driver.findElement(By.id("ff14642ac1c__us_address"));
-        String actualAddresValue = Address.getAttribute("value");
-        assertString(actualCityValue,AD);
+        String actualaddresValue = Address.getAttribute("value");
+        assertString(actualaddresValue,AD);
 
         //check Phone Field
-        driver.findElement(By.id("ff14642ac1c__us_phone"));
-        String actualPhoneValue = PhoneNumber.getAttribute("value");
-        assertString(actualPhoneValue,PH);
+        String actualphoneValue = PhoneNumber.getAttribute("value");
+        assertString(actualphoneValue,PH);
 
-        driver.quit();
+        driver.findElement(By.name("button_ok"));
+
+      //  driver.quit();
 
     }
     public static void assertString(String ActualResult, String ExpectedResult) {
