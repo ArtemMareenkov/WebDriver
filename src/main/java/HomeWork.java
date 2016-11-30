@@ -79,7 +79,7 @@ public class HomeWork {
 
         driver.findElement(By.name("search")).click(); //search button click
 
-        driver.findElement(By.xpath(".//td[.//a[text()='" + u + "']]")).click(); // open Players view
+        driver.findElement(By.xpath(".//tr[.//a[text()='" + u + "']]/img[@alt='Edit']")).click(); //Edit button click
 
         //Check User Mail Field
         String actualEmailValue = Useremail.getAttribute("value");
@@ -105,7 +105,7 @@ public class HomeWork {
         String actualPhoneValue = PhoneNumber.getAttribute("value");
         assertString(actualPhoneValue,ph);
 
-        driver.findElement(By.name("button_ok"));
+        driver.findElement(By.name("button_cancel"));
 
         usersearchfield.sendKeys(u);
 
@@ -137,7 +137,7 @@ public class HomeWork {
         usersearchfield.sendKeys(u);
         driver.findElement(By.name("search")).click(); //search button click
 
-        driver.findElement(By.xpath(".//td[.//a[text()='" + u + "']]")).click(); // open Players view
+        driver.findElement(By.xpath(".//tr[.//a[text()='" + u + "']]/img[@alt='Edit']")).click(); // open Edit Players
 
         //Check User Mail Field
         String actualMailValue = Useremail.getAttribute("value");
@@ -163,9 +163,8 @@ public class HomeWork {
         String actualphoneValue = PhoneNumber.getAttribute("value");
         assertString(actualphoneValue,PH);
 
-        driver.findElement(By.name("button_ok"));
-
-      //  driver.quit();
+       
+        driver.quit();
 
     }
     public static void assertString(String ActualResult, String ExpectedResult) {
