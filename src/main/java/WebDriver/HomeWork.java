@@ -84,7 +84,7 @@ public class HomeWork {
         driver.findElement(By.xpath(".//tr[.//a[text()='" + u + "']]/img[@alt='Edit']")).click(); //Edit button click
 
         //Check User Mail Field
-        String actualEmailValue = Useremail.getAttribute("value");
+        String actualEmailValue = inputUserEmail.getAttribute("value");
         assertString(actualEmailValue, m + "gmail.com");
 
         //Check First Name Field
@@ -117,7 +117,7 @@ public class HomeWork {
         usersearchfield.sendKeys(u);
 
         String UsM = RandomStringUtils.random(8,true,true);
-        Useremail.sendKeys(UsM+"mail.ru");
+        inputUserEmail.sendKeys(UsM+"mail.ru");
 
         String FN = RandomStringUtils.random(9,true, false);
         FirstName.sendKeys(FN);
@@ -142,7 +142,7 @@ public class HomeWork {
         driver.findElement(By.xpath(".//tr[.//a[text()='" + u + "']]/img[@alt='Edit']")).click(); // open Edit Players
 
         //Check User Mail Field
-        String actualMailValue = Useremail.getAttribute("value");
+        String actualMailValue = inputUserEmail.getAttribute("value");
         assertString(actualMailValue, UsM+"mail.ru");
 
         //Check First Name Field
