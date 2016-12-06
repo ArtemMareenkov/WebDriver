@@ -1,4 +1,4 @@
-package WebDriverTestNG.Pages;
+package WebDriverWithTestNG.Pages;
 
 /**
  * Created by artem on 06.12.2016.
