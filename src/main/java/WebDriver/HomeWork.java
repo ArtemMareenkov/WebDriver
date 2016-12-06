@@ -1,3 +1,5 @@
+package WebDriver;
+
 import com.sun.deploy.net.proxy.WFirefoxProxyConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,32 +22,32 @@ public class HomeWork {
         //open website
         driver.get("http://80.92.229.236:81/auth/login");
         //Login field find
-        WebElement loginInput = driver.findElement(By.id("username"));
-        loginInput.sendKeys("admin"); // login enter
+        WebElement inputLogin= driver.findElement(By.id("username"));
+        inputLogin.sendKeys("admin"); // login enter
 
-        WebElement passwordInput = driver.findElement(By.id ("password")); //Password field find
-        passwordInput.sendKeys("123");// password enter
+        WebElement inputPassword = driver.findElement(By.id ("password")); //Password field find
+        inputPassword.sendKeys("123");// password enter
 
-        WebElement LoginButton = driver.findElement(By.id("logIn")); // Login button Fiend
-        LoginButton.click(); //Login button click
+        WebElement clickLoginButton = driver.findElement(By.id("logIn")); // Login button Fiend
+        clickLoginButton.click(); //Login button click
 
-        WebElement InsertButton = driver.findElement(By.xpath(".//a[@href='http://80.92.229.236:81/players/insert']/img")); // insert player button fiend
-        InsertButton.click();// insert player button click
+        WebElement clickInsertButton = driver.findElement(By.xpath(".//a[@href='http://80.92.229.236:81/players/insert']/img")); // insert player button fiend
+        clickInsertButton.click();// insert player button click
 
         String u = RandomStringUtils.random(8, true, true); // random user name generate
-        WebElement Username = driver.findElement(By.id("ff14642ac1c__us_login"));
-        Username.sendKeys(u);
+        WebElement inputUsername = driver.findElement(By.id("ff14642ac1c__us_login"));
+        inputUsername.sendKeys(u);
 
         String p = RandomStringUtils.random(10, true, true);
-        WebElement Userpassword = driver.findElement(By.id("ff14642ac1c__us_password"));
-        Userpassword.sendKeys(p);
+        WebElement inputUserpassword = driver.findElement(By.id("ff14642ac1c__us_password"));
+        inputUserpassword.sendKeys(p);
 
-        WebElement userpasswordconfirm = driver.findElement(By.id("ff14642ac1c__confirm_password"));
-        userpasswordconfirm.sendKeys(p);
+        WebElement inputUserPasswordConfirm = driver.findElement(By.id("ff14642ac1c__confirm_password"));
+        inputUserPasswordConfirm.sendKeys(p);
 
         String m = RandomStringUtils.random(10,true,true);
-        WebElement Useremail = driver.findElement(By.id("ff14642ac1c__us_email"));
-        Useremail.sendKeys(m +"@gmail.com");
+        WebElement inputUserEmail = driver.findElement(By.id("ff14642ac1c__us_email"));
+        inputUserEmail.sendKeys(m +"@gmail.com");
 
         String f = RandomStringUtils.random(7,true,false);
         WebElement FirstName = driver.findElement(By.id("ff14642ac1c__us_fname"));
@@ -163,7 +165,7 @@ public class HomeWork {
         String actualphoneValue = PhoneNumber.getAttribute("value");
         assertString(actualphoneValue,PH);
 
-       
+
         driver.quit();
 
     }
