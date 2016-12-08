@@ -120,6 +120,10 @@ public class CRUDUserTest {
 
         editPlayerPage.cancelButtonClick();
     }
+    @Test
+    public void deleteUserEtst(){
+        
+    }
     @AfterTest
     public void afterTest(){
         driver.quit();
