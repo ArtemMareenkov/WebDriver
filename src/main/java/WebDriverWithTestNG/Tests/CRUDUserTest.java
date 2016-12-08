@@ -86,30 +86,39 @@ public class CRUDUserTest {
        editPlayerPage.setEmail(generatedMailValue + "yahhoo.com");
 
         String generatedPasswordValue = RandomStringUtils.random(10, true, true);
-        createPlayerPage.setPassword(generatedPasswordValue);
-        createPlayerPage.setConfirmPassword(generatedPasswordValue);
+        editPlayerPage.setPassword(generatedPasswordValue);
+        editPlayerPage.setConfirmPassword(generatedPasswordValue);
 
         String generatedFirstNameValue = RandomStringUtils.random(7,true,false);
-        createPlayerPage.setFirstName(generatedFirstNameValue);
+        editPlayerPage.setFirstName(generatedFirstNameValue);
 
         String generatedLastNameValue = RandomStringUtils.random(8,true,false);
-        createPlayerPage.setLastName(generatedLastNameValue);
+        editPlayerPage.setLastName(generatedLastNameValue);
 
         String generatedCityValue = RandomStringUtils.random(7,true,false);
-        createPlayerPage.setCity(generatedCityValue);
+        editPlayerPage.setCity(generatedCityValue);
 
         String generatedAddressValue = RandomStringUtils.random(9,true,true);
-        createPlayerPage.setAddress(generatedAddressValue);
+        editPlayerPage.setAddress(generatedAddressValue);
 
-        String generatedPhoneNumber = RandomStringUtils.random(11,false,true);
-        createPlayerPage.setPhone(generatedPhoneNumber);
+        String generatedPhoneValue = RandomStringUtils.random(11,false,true);
+        editPlayerPage.setPhone(generatedPhoneValue);
 
-        createPlayerPage.saveButtonClick();
-        Assert.assertEquals(createPlayerPage.getTitle(),"Players","Wrong title");
+        editPlayerPage.saveButtonClick();
+        Assert.assertEquals(editPlayerPage.getTitle(),"Players","Wrong title");
 
+        editPlayerPage.setPlayerSearch(generatedUsernameValue);
 
+        Assert.assertEquals(createPlayerPage.getUsernameFieldValue(),generatedUsernameValue,"Wrong Username field value"); // Check username field value
 
+        Assert.assertEquals(editPlayerPage.getEmailFieldValue(),generatedMailValue,"Wrong email field value");
+        Assert.assertEquals(editPlayerPage.getFirstNameFieldValue(),generatedFirstNameValue, "Wrong firstname field value");
+        Assert.assertEquals(editPlayerPage.getLastNameFieldValue(),generatedLastNameValue,"Wrong lastname field value");
+        Assert.assertEquals(editPlayerPage.getCityFieldValue(),generatedCityValue,"Wrong city field value");
+        Assert.assertEquals(editPlayerPage.getAddressFieldValue(),generatedAddressValue,"Wrong city field value");
+        Assert.assertEquals(editPlayerPage.getPhoneFieldValue(),generatedPhoneValue, "Wrong city field value");
 
+        editPlayerPage.cancelButtonClick();
     }
     @AfterTest
     public void afterTest(){

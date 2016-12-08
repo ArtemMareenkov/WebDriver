@@ -16,11 +16,4 @@ public class EditPlayerPage extends CreatePlayerPage {
         this.driver = driver;
     }
 
-    public void setPlayerSearch(String value) {
-        WebElement inputPlayerSearchFieldValue = driver.findElement(By.id("723a925886__login"));
-        inputPlayerSearchFieldValue.clear();
-        inputPlayerSearchFieldValue.sendKeys(value);
-        driver.findElement(By.name("search")).click(); //search button click
-        driver.findElement(By.xpath(".//tr[.//a[text()='" + value + "']]/img[@alt='Edit']")).click(); //edit user button click
-    }
 }
