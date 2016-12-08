@@ -107,8 +107,6 @@ public class HomeWork {
         String actualPhoneValue = PhoneNumber.getAttribute("value");
         assertString(actualPhoneValue,ph);
 
-        driver.findElement(By.name("button_cancel"));
-
         usersearchfield.sendKeys(u);
 
         driver.findElement(By.name("search")).click(); //search button click

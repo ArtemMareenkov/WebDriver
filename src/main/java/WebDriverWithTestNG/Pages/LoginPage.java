@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 public class LoginPage {
 
     private WebDriver driver;
-    private static final String URL = "http://80.92.229.236:81/auth/login";
+    public static final String URL = "http://80.92.229.236:81/auth/login";
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -20,13 +20,13 @@ public class LoginPage {
         driver.get(URL);
     }
     //Enter login method
-    public void setUsername(String value){
-        WebElement inputLogin = driver.findElement(By.id("usernamew"));
+    public void setLoginUsername(String value){
+        WebElement inputLogin = driver.findElement(By.id("username"));
           inputLogin.clear();
           inputLogin.sendKeys(value);
-          }
+    }
 
-    public void setPassword(String value) {
+    public void setLoginPassword(String value) {
         WebElement inputPassword = driver.findElement(By.id("password"));
             inputPassword.clear();
             inputPassword.sendKeys(value);
@@ -34,6 +34,17 @@ public class LoginPage {
 
     public void logIn() {
         WebElement loginButtonClick = driver.findElement(By.id("logIn"));
-        loginButtonClick.click();
+          loginButtonClick.click();
     }
+
+    public String getErrorMassage() {
+        WebElement errorElement = driver.findElement(By.xpath(".//ul[@class='errors']/li"));
+          return errorElement.getText();
+    }
+
+    public String getTitle() {
+        return driver.getTitle();
+    }
+
+
 }
