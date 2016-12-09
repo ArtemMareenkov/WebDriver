@@ -8,14 +8,37 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by Artem Mareenkov on 06.12.2016.
  */
-public class CreatePlayerPage extends LoginPage{
+public class CreateEditPlayerPage {
+
 
     private WebDriver driver;
+    public static final String URL = "http://80.92.229.236:81/auth/login";
 
-    public CreatePlayerPage(WebDriver driver){
-        super(driver);
+    public CreateEditPlayerPage(WebDriver driver){
         this.driver = driver;
     }
+
+    public void open(){
+        driver.get(URL);
+    }
+
+    public void setLoginUsername(String value){
+        WebElement inputLogin = driver.findElement(By.id("username"));
+        inputLogin.clear();
+        inputLogin.sendKeys(value);
+    }
+
+    public void setLoginPassword(String value) {
+        WebElement inputPassword = driver.findElement(By.id("password"));
+        inputPassword.clear();
+        inputPassword.sendKeys(value);
+    }
+
+    public void logIn() {
+        WebElement loginButtonClick = driver.findElement(By.id("logIn"));
+        loginButtonClick.click();
+    }
+
 
     public void insertButtonClick() {
         WebElement clickInsertButton = driver.findElement(By.xpath(".//a[@href='http://80.92.229.236:81/players/insert']/img"));
