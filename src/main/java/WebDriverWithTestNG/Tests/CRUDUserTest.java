@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import org.testng.asserts.SoftAssert;
 
 
 /**
@@ -25,7 +24,7 @@ public class CRUDUserTest {
     public void beforeTest() {
         driver = new FirefoxDriver();
         createEditPlayerPage.setLoginUsername("admin");
-        createEditPlayerPage.setLoginPassword("123");
+        createEditPlayerPage.setLoginPassword();
         createEditPlayerPage.logIn();
     }
 

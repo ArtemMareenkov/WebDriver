@@ -39,7 +39,6 @@ public class CreateEditPlayerPage {
         loginButtonClick.click();
     }
 
-
     public void insertButtonClick() {
         WebElement clickInsertButton = driver.findElement(By.xpath(".//a[@href='http://80.92.229.236:81/players/insert']/img"));
         clickInsertButton.click();
