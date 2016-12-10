@@ -1,6 +1,6 @@
 package WebDriverWithTestNG.Tests;
 
-import WebDriverWithTestNG.Pages.CreateEditPlayerPage;
+import WebDriverWithTestNG.Pages.CreateEditDeletePlayerPage;
 import WebDriverWithTestNG.Pages.DeletePlayerPage;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
@@ -15,110 +15,112 @@ import org.testng.annotations.*;
 public class CRUDUserTest {
 
     private WebDriver driver;
-    private CreateEditPlayerPage createEditPlayerPage;
-    private DeletePlayerPage deletePlayerPage;
+    private CreateEditDeletePlayerPage createEditDeletePlayerPage;
+
 
     private String  generatedUsernameValue = RandomStringUtils.random(8, true, true);
 
     @BeforeTest
     public void beforeTest() {
         driver = new FirefoxDriver();
-        createEditPlayerPage.setLoginUsername("admin");
-        createEditPlayerPage.setLoginPassword();
-        createEditPlayerPage.logIn();
+        createEditDeletePlayerPage  = new CreateEditDeletePlayerPage(driver);
+        createEditDeletePlayerPage.open();
+        createEditDeletePlayerPage.setLoginUsername("admin");
+        createEditDeletePlayerPage.setLoginPassword("123");
+        createEditDeletePlayerPage.logIn();
     }
 
     @Test
     public void createUserTest(){
-        createEditPlayerPage.insertButtonClick();
-        createEditPlayerPage.setUsername(generatedUsernameValue);
+        createEditDeletePlayerPage.insertButtonClick();
+        createEditDeletePlayerPage.setUsername(generatedUsernameValue);
 
         String generatedMailValue = RandomStringUtils.random(10,true,true);
-        createEditPlayerPage.setEmail(generatedMailValue + "yandex.com");
+        createEditDeletePlayerPage.setEmail(generatedMailValue + "yandex.com");
 
         String generatedPasswordValue = RandomStringUtils.random(10, true, true);
-        createEditPlayerPage.setPassword(generatedPasswordValue);
-        createEditPlayerPage.setConfirmPassword(generatedPasswordValue);
+        createEditDeletePlayerPage.setPassword(generatedPasswordValue);
+        createEditDeletePlayerPage.setConfirmPassword(generatedPasswordValue);
 
         String generatedFirstNameValue = RandomStringUtils.random(7,true,false);
-        createEditPlayerPage.setFirstName(generatedFirstNameValue);
+        createEditDeletePlayerPage.setFirstName(generatedFirstNameValue);
 
         String generatedLastNameValue = RandomStringUtils.random(8,true,false);
-        createEditPlayerPage.setLastName(generatedLastNameValue);
+        createEditDeletePlayerPage.setLastName(generatedLastNameValue);
 
         String generatedCityValue = RandomStringUtils.random(7,true,false);
-        createEditPlayerPage.setCity(generatedCityValue);
+        createEditDeletePlayerPage.setCity(generatedCityValue);
 
         String generatedAddressValue = RandomStringUtils.random(9,true,true);
-        createEditPlayerPage.setAddress(generatedAddressValue);
+        createEditDeletePlayerPage.setAddress(generatedAddressValue);
 
         String generatedPhoneValue = RandomStringUtils.random(11,false,true);
-        createEditPlayerPage.setPhone(generatedPhoneValue);
+        createEditDeletePlayerPage.setPhone(generatedPhoneValue);
 
-        createEditPlayerPage.saveButtonClick();
+        createEditDeletePlayerPage.saveButtonClick();
 
-        createEditPlayerPage.setPlayerSearch(generatedUsernameValue);
+        createEditDeletePlayerPage.setPlayerSearchEdit(generatedUsernameValue);
 
-        Assert.assertEquals(createEditPlayerPage.getUsernameFieldValue(),generatedUsernameValue,"Wrong Username field value"); // Check username field value
+        Assert.assertEquals(createEditDeletePlayerPage.getUsernameFieldValue(),generatedUsernameValue,"Wrong Username field value"); // Check username field value
 
-        Assert.assertEquals(createEditPlayerPage.getEmailFieldValue(),generatedMailValue,"Wrong email field value");
-        Assert.assertEquals(createEditPlayerPage.getFirstNameFieldValue(),generatedFirstNameValue, "Wrong firstname field value");
-        Assert.assertEquals(createEditPlayerPage.getLastNameFieldValue(),generatedLastNameValue,"Wrong lastname field value");
-        Assert.assertEquals(createEditPlayerPage.getCityFieldValue(),generatedCityValue,"Wrong city field value");
-        Assert.assertEquals(createEditPlayerPage.getAddressFieldValue(),generatedAddressValue,"Wrong city field value");
-        Assert.assertEquals(createEditPlayerPage.getPhoneFieldValue(),generatedPhoneValue, "Wrong city field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getEmailFieldValue(),generatedMailValue,"Wrong email field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getFirstNameFieldValue(),generatedFirstNameValue, "Wrong firstname field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getLastNameFieldValue(),generatedLastNameValue,"Wrong lastname field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getCityFieldValue(),generatedCityValue,"Wrong city field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getAddressFieldValue(),generatedAddressValue,"Wrong city field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getPhoneFieldValue(),generatedPhoneValue, "Wrong city field value");
 
-        createEditPlayerPage.cancelButtonClick();
+        createEditDeletePlayerPage.cancelButtonClick();
     }
 
     @Test
     public void editUserTest(){
-       createEditPlayerPage.setPlayerSearch(generatedUsernameValue);
+
+        createEditDeletePlayerPage.setPlayerSearchEdit("user194");
 
        String generatedMailValue = RandomStringUtils.random(10,true,true);
-       createEditPlayerPage.setEmail(generatedMailValue + "yahhoo.com");
+       createEditDeletePlayerPage.setEmail(generatedMailValue + "yahhoo.com");
 
-        String generatedPasswordValue = RandomStringUtils.random(10, true, true);
-        createEditPlayerPage.setPassword(generatedPasswordValue);
-        createEditPlayerPage.setConfirmPassword(generatedPasswordValue);
+       String generatedFirstNameValue = RandomStringUtils.random(7,true,false);
+       createEditDeletePlayerPage.setFirstName(generatedFirstNameValue);
 
-        String generatedFirstNameValue = RandomStringUtils.random(7,true,false);
-        createEditPlayerPage.setFirstName(generatedFirstNameValue);
+       String generatedLastNameValue = RandomStringUtils.random(8,true,false);
+       createEditDeletePlayerPage.setLastName(generatedLastNameValue);
 
-        String generatedLastNameValue = RandomStringUtils.random(8,true,false);
-        createEditPlayerPage.setLastName(generatedLastNameValue);
+       String generatedCityValue = RandomStringUtils.random(7,true,false);
+       createEditDeletePlayerPage.setCity(generatedCityValue);
 
-        String generatedCityValue = RandomStringUtils.random(7,true,false);
-        createEditPlayerPage.setCity(generatedCityValue);
+       String generatedAddressValue = RandomStringUtils.random(9,true,true);
+       createEditDeletePlayerPage.setAddress(generatedAddressValue);
 
-        String generatedAddressValue = RandomStringUtils.random(9,true,true);
-        createEditPlayerPage.setAddress(generatedAddressValue);
+       String generatedPhoneValue = RandomStringUtils.random(11,false,true);
+       createEditDeletePlayerPage.setPhone(generatedPhoneValue);
 
-        String generatedPhoneValue = RandomStringUtils.random(11,false,true);
-        createEditPlayerPage.setPhone(generatedPhoneValue);
+       createEditDeletePlayerPage.saveButtonClick();
 
-        createEditPlayerPage.saveButtonClick();
+       createEditDeletePlayerPage.setPlayerSearchEdit("user 194");
 
-        createEditPlayerPage.setPlayerSearch(generatedUsernameValue);
+       Assert.assertEquals(createEditDeletePlayerPage.getUsernameFieldValue(),generatedUsernameValue,"Wrong Username field value"); // Check username field value
 
-        Assert.assertEquals(createEditPlayerPage.getUsernameFieldValue(),generatedUsernameValue,"Wrong Username field value"); // Check username field value
+        Assert.assertEquals(createEditDeletePlayerPage.getEmailFieldValue(),generatedMailValue,"Wrong email field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getFirstNameFieldValue(),generatedFirstNameValue, "Wrong firstname field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getLastNameFieldValue(),generatedLastNameValue,"Wrong lastname field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getCityFieldValue(),generatedCityValue,"Wrong city field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getAddressFieldValue(),generatedAddressValue,"Wrong city field value");
+        Assert.assertEquals(createEditDeletePlayerPage.getPhoneFieldValue(),generatedPhoneValue, "Wrong city field value");
 
-        Assert.assertEquals(createEditPlayerPage.getEmailFieldValue(),generatedMailValue,"Wrong email field value");
-        Assert.assertEquals(createEditPlayerPage.getFirstNameFieldValue(),generatedFirstNameValue, "Wrong firstname field value");
-        Assert.assertEquals(createEditPlayerPage.getLastNameFieldValue(),generatedLastNameValue,"Wrong lastname field value");
-        Assert.assertEquals(createEditPlayerPage.getCityFieldValue(),generatedCityValue,"Wrong city field value");
-        Assert.assertEquals(createEditPlayerPage.getAddressFieldValue(),generatedAddressValue,"Wrong city field value");
-        Assert.assertEquals(createEditPlayerPage.getPhoneFieldValue(),generatedPhoneValue, "Wrong city field value");
-
-        createEditPlayerPage.cancelButtonClick();
+        createEditDeletePlayerPage.cancelButtonClick();
     }
     @Test
     public void deleteUserEtst(){
 
+        createEditDeletePlayerPage.setPlayerSearchDelete("user195");
     }
+
     @AfterTest
     public void afterTest(){
         driver.quit();
     }
 
-}
+
+    }

@@ -8,13 +8,13 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by Artem Mareenkov on 06.12.2016.
  */
-public class CreateEditPlayerPage {
+public class CreateEditDeletePlayerPage {
 
 
     private WebDriver driver;
     public static final String URL = "http://80.92.229.236:81/auth/login";
 
-    public CreateEditPlayerPage(WebDriver driver){
+    public CreateEditDeletePlayerPage(WebDriver driver){
         this.driver = driver;
     }
 
@@ -40,8 +40,7 @@ public class CreateEditPlayerPage {
     }
 
     public void insertButtonClick() {
-        WebElement clickInsertButton = driver.findElement(By.xpath(".//a[@href='http://80.92.229.236:81/players/insert']/img"));
-        clickInsertButton.click();
+         driver.findElement(By.xpath(".//a[@href='http://80.92.229.236:81/players/insert']/img")).click();
     }
 
     public void setUsername(String value) {
@@ -103,7 +102,7 @@ public class CreateEditPlayerPage {
         clickSaveButton.click();
     }
 
-    public void setPlayerSearch(String value) {
+    public void setPlayerSearchEdit(String value) {
         WebElement inputPlayerSearchFieldValue = driver.findElement(By.id("723a925886__login"));
         inputPlayerSearchFieldValue.clear();
         inputPlayerSearchFieldValue.sendKeys(value);
@@ -148,6 +147,15 @@ public class CreateEditPlayerPage {
 
     public void cancelButtonClick() {
         driver.findElement(By.name("button_cancel")).click();
+    }
+
+     public void setPlayerSearchDelete(String value) {
+         WebElement inputPlayerSearchFieldValue = driver.findElement(By.id("723a925886__login"));
+         inputPlayerSearchFieldValue.clear();
+         inputPlayerSearchFieldValue.sendKeys(value);
+         driver.findElement(By.name("search")).click(); //search button click
+         driver.findElement(By.xpath(".//tr[.//a[text()='" + value + "']]/img[@alt='Delete']")).click();
+
     }
 }
 
