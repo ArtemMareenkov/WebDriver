@@ -1,4 +1,4 @@
-package WebDriverWithTestNG.Pages;
+package WebDriver_TestNG.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -37,9 +37,9 @@ public class LoginPage {
           loginButtonClick.click();
     }
 
-    public String getErrorMassage() {
-        WebElement errorElement = driver.findElement(By.xpath(".//ul[@class='errors']/li"));
-          return errorElement.getText();
+    public String getErrorMessage() {
+        WebElement errorMessage = driver.findElement(By.xpath(".//ul[@class='errors']/li"));
+          return errorMessage.getText();
     }
 
     public String getTitle() {

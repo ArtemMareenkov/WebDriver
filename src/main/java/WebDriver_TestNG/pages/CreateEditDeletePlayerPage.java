@@ -1,4 +1,4 @@
-package WebDriverWithTestNG.Pages;
+package WebDriver_TestNG.pages;
 
 
 import org.openqa.selenium.By;

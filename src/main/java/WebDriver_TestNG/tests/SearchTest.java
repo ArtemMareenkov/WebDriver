@@ -1,4 +1,4 @@
-package WebDriverWithTestNG.Tests;
+package WebDriver_TestNG.tests;
 
 /**
  * Created by artem on 06.12.2016.

@@ -1,6 +1,6 @@
-package WebDriverWithTestNG.Tests;
+package WebDriver_TestNG.tests;
 
-import WebDriverWithTestNG.Pages.LoginPage;
+import WebDriver_TestNG.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -48,21 +48,21 @@ public class LoginTest {
         loginPage.setLoginUsername("Addmmnn");
         loginPage.setLoginPassword("123");
         loginPage.logIn();
-        Assert.assertEquals(loginPage.getErrorMassage(),"Invalid username or password","Wrong error message");
+        Assert.assertEquals(loginPage.getErrorMessage(),"Invalid username or password","Wrong error message");
     }
      @Test
      public void negativePasswordTest(){
         loginPage.setLoginUsername("admin");
         loginPage.setLoginPassword("454726");
         loginPage.logIn();
-         Assert.assertEquals(loginPage.getErrorMassage(),"Invalid username or password","Wrong error message");
+         Assert.assertEquals(loginPage.getErrorMessage(),"Invalid username or password","Wrong error message");
      }
      @Test
      public void emptyUsernmaeAndPasswordTest(){
          loginPage.setLoginPassword("");
          loginPage.setLoginPassword("");
          loginPage.logIn();
-         Assert.assertEquals(loginPage.getErrorMassage(),"Value is required and can't be empty","Wrong error message");
+         Assert.assertEquals(loginPage.getErrorMessage(),"Value is required and can't be empty","Wrong error message");
      }
     @AfterTest
     public void afterTest(){

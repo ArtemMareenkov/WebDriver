@@ -1,7 +1,6 @@
-package WebDriverWithTestNG.Tests;
+package WebDriver_TestNG.tests;
 
-import WebDriverWithTestNG.Pages.CreateEditDeletePlayerPage;
-import WebDriverWithTestNG.Pages.DeletePlayerPage;
+import WebDriver_TestNG.pages.CreateEditDeletePlayerPage;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -33,6 +32,7 @@ public class CRUDUserTest {
     @Test
     public void createUserTest(){
         createEditDeletePlayerPage.insertButtonClick();
+
         createEditDeletePlayerPage.setUsername(generatedUsernameValue);
 
         String generatedMailValue = RandomStringUtils.random(10,true,true);
