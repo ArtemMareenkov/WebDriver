@@ -47,7 +47,6 @@ public class CreateEditDeletePlayerPage {
         WebElement inputUsername = driver.findElement(By.id("ff14642ac1c__us_login"));
         inputUsername.clear();
         inputUsername.sendKeys(value);
-
     }
 
     public void setPassword(String value) {
@@ -107,12 +106,13 @@ public class CreateEditDeletePlayerPage {
         inputPlayerSearchFieldValue.clear();
         inputPlayerSearchFieldValue.sendKeys(value);
         driver.findElement(By.name("search")).click(); //search button click
-        driver.findElement(By.xpath(".//tr[.//a[text()='" + value + "']]/img[@alt='Edit']")).click();
+        driver.findElement(By.xpath(".//tr[.//a[text()='" + value + "']]//img[@alt='Edit']")).click();
     }
 
     public String getUsernameFieldValue() {
         WebElement usernameFieldValue = driver.findElement(By.id("ff14642ac1c__us_login"));
-        return usernameFieldValue.getText();
+        String text = usernameFieldValue.getText();
+       return text;
     }
 
     public String getEmailFieldValue() {
@@ -154,7 +154,7 @@ public class CreateEditDeletePlayerPage {
          inputPlayerSearchFieldValue.clear();
          inputPlayerSearchFieldValue.sendKeys(value);
          driver.findElement(By.name("search")).click(); //search button click
-         driver.findElement(By.xpath(".//tr[.//a[text()='" + value + "']]/img[@alt='Delete']")).click();
+         driver.findElement(By.xpath(".//tr[.//a[text()='" + value + "']]//img[@alt='Delete']")).click();
 
     }
 }

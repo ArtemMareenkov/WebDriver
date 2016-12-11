@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
 
 /**
@@ -15,13 +16,15 @@ public class CRUDUserTest {
 
     private WebDriver driver;
     private CreateEditDeletePlayerPage createEditDeletePlayerPage;
+    SoftAssert softAssert;
 
 
-    private String  generatedUsernameValue = RandomStringUtils.random(8, true, true);
+    public String  generatedUsernameValue = RandomStringUtils.random(8, true, true);
 
     @BeforeTest
     public void beforeTest() {
         driver = new FirefoxDriver();
+        softAssert = new SoftAssert();
         createEditDeletePlayerPage  = new CreateEditDeletePlayerPage(driver);
         createEditDeletePlayerPage.open();
         createEditDeletePlayerPage.setLoginUsername("admin");
@@ -36,7 +39,7 @@ public class CRUDUserTest {
         createEditDeletePlayerPage.setUsername(generatedUsernameValue);
 
         String generatedMailValue = RandomStringUtils.random(10,true,true);
-        createEditDeletePlayerPage.setEmail(generatedMailValue + "yandex.com");
+        createEditDeletePlayerPage.setEmail(generatedMailValue + "@yandex.com");
 
         String generatedPasswordValue = RandomStringUtils.random(10, true, true);
         createEditDeletePlayerPage.setPassword(generatedPasswordValue);
@@ -59,16 +62,17 @@ public class CRUDUserTest {
 
         createEditDeletePlayerPage.saveButtonClick();
 
-        createEditDeletePlayerPage.setPlayerSearchEdit(generatedUsernameValue);
+       createEditDeletePlayerPage.setPlayerSearchEdit(generatedUsernameValue);
 
-        Assert.assertEquals(createEditDeletePlayerPage.getUsernameFieldValue(),generatedUsernameValue,"Wrong Username field value"); // Check username field value
+       softAssert.assertEquals(createEditDeletePlayerPage.getUsernameFieldValue(),generatedUsernameValue,"Wrong Username field value"); // Check username field value
 
-        Assert.assertEquals(createEditDeletePlayerPage.getEmailFieldValue(),generatedMailValue,"Wrong email field value");
-        Assert.assertEquals(createEditDeletePlayerPage.getFirstNameFieldValue(),generatedFirstNameValue, "Wrong firstname field value");
-        Assert.assertEquals(createEditDeletePlayerPage.getLastNameFieldValue(),generatedLastNameValue,"Wrong lastname field value");
-        Assert.assertEquals(createEditDeletePlayerPage.getCityFieldValue(),generatedCityValue,"Wrong city field value");
-        Assert.assertEquals(createEditDeletePlayerPage.getAddressFieldValue(),generatedAddressValue,"Wrong city field value");
-        Assert.assertEquals(createEditDeletePlayerPage.getPhoneFieldValue(),generatedPhoneValue, "Wrong city field value");
+        softAssert.assertEquals(createEditDeletePlayerPage.getEmailFieldValue(),generatedMailValue,"Wrong email field value");
+        softAssert.assertEquals(createEditDeletePlayerPage.getFirstNameFieldValue(),generatedFirstNameValue, "Wrong firstname field value");
+        softAssert.assertEquals(createEditDeletePlayerPage.getLastNameFieldValue(),generatedLastNameValue,"Wrong lastname field value");
+        softAssert.assertEquals(createEditDeletePlayerPage.getCityFieldValue(),generatedCityValue,"Wrong city field value");
+        softAssert.assertEquals(createEditDeletePlayerPage.getAddressFieldValue(),generatedAddressValue,"Wrong city field value");
+        softAssert.assertEquals(createEditDeletePlayerPage.getPhoneFieldValue(),generatedPhoneValue, "Wrong city field value");
+        softAssert.assertAll();
 
         createEditDeletePlayerPage.cancelButtonClick();
     }
@@ -79,7 +83,7 @@ public class CRUDUserTest {
         createEditDeletePlayerPage.setPlayerSearchEdit("user194");
 
        String generatedMailValue = RandomStringUtils.random(10,true,true);
-       createEditDeletePlayerPage.setEmail(generatedMailValue + "yahhoo.com");
+       createEditDeletePlayerPage.setEmail(generatedMailValue + "@yahhoo.com");
 
        String generatedFirstNameValue = RandomStringUtils.random(7,true,false);
        createEditDeletePlayerPage.setFirstName(generatedFirstNameValue);
@@ -121,6 +125,4 @@ public class CRUDUserTest {
     public void afterTest(){
         driver.quit();
     }
-
-
     }

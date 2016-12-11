@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginTest {
     private static WebDriver driver;
     private  static LoginPage loginPage;
-    private SoftAssert softAssert;
+
 
 
     @BeforeTest
@@ -25,7 +25,6 @@ public class LoginTest {
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(driver);
         loginPage.open();
-
     }
 
   @Parameters({"username","password","title"})
@@ -34,9 +33,9 @@ public class LoginTest {
         loginPage.setUsername(username);
         loginPage.setPassoword(password);
         loginPage.loginButtobClick();
-        softAssert.assertEquals(driver.getTitle(),title,"Wrong title");
-        softAssert.assertAll();
+        Assert.assertEquals(driver.getTitle(),title,"Wrong title");
     }
+
    @Parameters({"username","password","expectedMessage"})
     @Test
     public void negtiveLoginTestWithIncorrectPassword(String username, String password,String expectedMessage){
