@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Poker Suite" verbose="1" >
+
+    <test name="positiveLoginTest ">
+    <parameter name="username" value="admin"/>
+    <parameter name="password" value="123"/>
+    <parameter name="title" value="Players"/>
+    <classes>
+        <class name="Webdriver_TestNG_XML.tests.LoginTest"/>
+    </classes>
+    </test>
+
+    <test name="negtiveUserpasswordTest">
+    <parameter name="username" value="admin"/>
+    <parameter name="password" value="4321"/>
+     <parameter name="expectedMessage" value="Invalid username or password"/>
+        <classes>
+            <class name="Webdriver_TestNG_XML.tests.LoginTest"/>
+        </classes>
+    </test>
+
+
+</suite>
