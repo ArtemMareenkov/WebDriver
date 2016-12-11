@@ -18,6 +18,23 @@
             <class name="Webdriver_TestNG_XML.tests.LoginTest"/>
         </classes>
     </test>
+    <test name="negtivePassowrdTest">
+        <parameter name="username" value="ggahhdmin"/>
+        <parameter name="password" value="4321"/>
+        <parameter name="expectedMessage" value="Invalid username or password"/>
+        <classes>
+            <class name="Webdriver_TestNG_XML.tests.LoginTest"/>
+        </classes>
+    </test>
+    <test name="emptyUsernmaeAndPasswordFieldTest">
+        <parameter name="username" value=""/>
+        <parameter name="password" value=""/>
+        <parameter name="expectedMessage" value="Value is required and can't be empty"/>
+        <classes>
+            <class name="Webdriver_TestNG_XML.tests.LoginTest"/>
+        </classes>
+    </test>
+
 
 
 </suite>

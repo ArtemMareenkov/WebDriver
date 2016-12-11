@@ -4,6 +4,7 @@ import Webdriver_TestNG_XML.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
@@ -16,7 +17,7 @@ public class LoginTest {
     private static WebDriver driver;
     private  static LoginPage loginPage;
     private SoftAssert softAssert;
-    WebElement actualMessage = loginPage.getErrorMessage();
+
 
     @BeforeTest
     public void beforTest(){
@@ -24,7 +25,7 @@ public class LoginTest {
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(driver);
         loginPage.open();
-        softAssert = new SoftAssert();
+
     }
 
   @Parameters({"username","password","title"})
@@ -42,15 +43,24 @@ public class LoginTest {
         loginPage.setUsername(username);
         loginPage.setPassoword(password);
         loginPage.loginButtobClick();
-        softAssert.assertEquals(actualMessage, expectedMessage, "Wrong error message");
-        softAssert.assertAll();
+        Assert.assertEquals(loginPage.getErrorMessage(), expectedMessage, "Wrong error message");
+
     }
     @Test
-    public void negativeLoginTestWithIncorrectUserName(String username, String password, String expectedMessage){
+    public void negativeLoginTestWithIncorrectUsername(String username, String password, String expectedMessage){
         loginPage.setUsername(username);
         loginPage.setPassoword(password);
         loginPage.loginButtobClick();
-        softAssert.assertEquals(actualMessage,expectedMessage,"Wrong error message");
+        Assert.assertEquals(loginPage.getErrorMessage(),expectedMessage,"Wrong error message");
+
+    }
+    @Test
+    public void emptyUsernameAndPasswordFieldTest(String username,String password, String expectedMessage){
+        loginPage.setUsername(username);
+        loginPage.setPassoword(password);
+        loginPage.loginButtobClick();
+        Assert.assertEquals(loginPage.getErrorMessage(),expectedMessage,"Wrong error message");
+
     }
 @AfterTest
     public void afterTest(){

@@ -58,7 +58,7 @@ public class LoginTest {
          Assert.assertEquals(loginPage.getErrorMessage(),"Invalid username or password","Wrong error message");
      }
      @Test
-     public void emptyUsernmaeAndPasswordTest(){
+     public void emptyUsernameAndPasswordFieldTest(){
          loginPage.setLoginPassword("");
          loginPage.setLoginPassword("");
          loginPage.logIn();
