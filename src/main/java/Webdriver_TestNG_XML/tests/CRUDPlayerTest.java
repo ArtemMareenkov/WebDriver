@@ -71,6 +71,8 @@ public class CRUDPlayerTest {
         softAssert.assertEquals(actualLastName,lastname,"Wrong last name fiedl value");
         String actualCity = createEditDeletePlayerPage.getCityFieldValue();
         softAssert.assertEquals(actualCity,city,"Wrong city field value");
+        String actualAddress = createEditDeletePlayerPage.getAddressFieldValue();
+        softAssert.assertEquals(actualAddress,address,"Wrong address field value");
 
     }
     @DataProvider

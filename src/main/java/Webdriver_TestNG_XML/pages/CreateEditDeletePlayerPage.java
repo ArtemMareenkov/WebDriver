@@ -13,7 +13,7 @@ public class CreateEditDeletePlayerPage {
 
     private WebDriver driver;
     private static final String URL = "http://80.92.229.236:81/auth/login";
-    public  getFirstNameFielValue;
+
 
     public CreateEditDeletePlayerPage(WebDriver driver) {
         this.driver = driver;
