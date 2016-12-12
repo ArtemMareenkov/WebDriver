@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,7 @@ public class CRUDPlayerTest {
 
     private static WebDriver driver;
     private  static CreateEditDeletePlayerPage createEditDeletePlayerPage;
+    private SoftAssert softAssert;
     String username = RandomStringUtils.random(8, true, true);
     String email = RandomStringUtils.random(10,true,true);
     String password = RandomStringUtils.random(10, true, true);
@@ -37,6 +39,7 @@ public class CRUDPlayerTest {
         createEditDeletePlayerPage.setUsername("admin");
         createEditDeletePlayerPage.setPassoword("123");
         createEditDeletePlayerPage.loginButtonClick();
+        softAssert = new SoftAssert();
         }
 
     @DataProvider
@@ -46,12 +49,40 @@ public class CRUDPlayerTest {
         };
     }
     @Test (dataProvider = "creataUserData")
-    public void createUserTest(String username, String email, String password, String confirmpassword,  String firstname, String lastname, String city, String address, String phone){
+    public void createPlayerTest(String username, String email, String password, String confirmpassword,  String firstname, String lastname, String city, String address, String phone){
         createEditDeletePlayerPage.insertButtonClick();
         createEditDeletePlayerPage.setUsernameValue(username);
         createEditDeletePlayerPage.setEmailValue(email);
         createEditDeletePlayerPage.setPasswordValue(password);
         createEditDeletePlayerPage.setConfirmPasswordValue(confirmpassword);
+        createEditDeletePlayerPage.setFirstNameValue(firstname);
+        createEditDeletePlayerPage.setLastNameValue(lastname);
+        createEditDeletePlayerPage.setCityValue(city);
+        createEditDeletePlayerPage.setAddressValue(address);
+        createEditDeletePlayerPage.setPhoneValue(phone);
+        createEditDeletePlayerPage.saveButtonClick();
+        String actualUsername = createEditDeletePlayerPage.getUsernameFieldValue();
+        softAssert.assertEquals(actualUsername,username,"Wrong username field value");
+        String actualEmail = createEditDeletePlayerPage.getEmailFieldValue();
+        softAssert.assertEquals(actualEmail,email,"Wrong email field value");
+        String actualFirstName = createEditDeletePlayerPage.getFirstNameFielValue();
+        softAssert.assertEquals(actualFirstName,firstname,"Wrong first name field value ");
+        String actualLastName = createEditDeletePlayerPage.getLastNameFieldValue();
+        softAssert.assertEquals(actualLastName,lastname,"Wrong last name fiedl value");
+        String actualCity = createEditDeletePlayerPage.getCityFieldValue();
+        softAssert.assertEquals(actualCity,city,"Wrong city field value");
+
+    }
+    @DataProvider
+    public Object [][] editUserData() {
+        return new Object[][]{
+                {"edit", username, email, password, confirmpassword, firstname, lastname, city, address, phone, "Save"}
+        };
+    }
+    @Test
+    public void editPlayerTest(String username, String email, String firstname, String lastname, String city, String address, String phone){
+        createEditDeletePlayerPage.setSearchEditPlayer(username);
+        createEditDeletePlayerPage.setEmailValue(email);
         createEditDeletePlayerPage.setFirstNameValue(firstname);
         createEditDeletePlayerPage.setLastNameValue(lastname);
         createEditDeletePlayerPage.setCityValue(city);

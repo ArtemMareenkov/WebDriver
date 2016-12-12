@@ -13,6 +13,7 @@ public class CreateEditDeletePlayerPage {
 
     private WebDriver driver;
     private static final String URL = "http://80.92.229.236:81/auth/login";
+    public  getFirstNameFielValue;
 
     public CreateEditDeletePlayerPage(WebDriver driver) {
         this.driver = driver;
@@ -108,5 +109,33 @@ public class CreateEditDeletePlayerPage {
     private WebElement saveButtonClick;
     public void saveButtonClick() {
         saveButtonClick.click();
+    }
+    
+    @FindBy(id = "723a925886__login")
+    private WebElement inputSearchPlayer;
+    public void setSearchEditPlayer(String username) {
+    inputSearchPlayer.clear();
+    inputSearchPlayer.sendKeys(username);
+    driver.findElement(By.name("search")).click();
+    driver.findElement(By.xpath(".//tr[.//a[text()='" + username + "']]//img[@alt='Edit']")).click();
+    }
+
+
+    public String getUsernameFieldValue() {
+        WebElement usernameFieldElement = driver.findElement(By.id("ff14642ac1c__us_login"));
+        String fieldUsername = usernameFieldElement.getText();
+        return fieldUsername;
+    }
+
+    public String getEmailFieldValue() {
+        WebElement emailFieldElement = driver.findElement(By.id("ff14642ac1c__us_email"));
+        String emailField = emailFieldElement.getText();
+        return emailField;
+    }
+
+    public String getFirstNameFielValue() {
+        WebElement firstNameFieldElement = driver.findElement(By.id("ff14642ac1c__us_fname"));
+        String firstNameField = firstNameFieldElement.getText();
+        return firstNameField;
     }
 }

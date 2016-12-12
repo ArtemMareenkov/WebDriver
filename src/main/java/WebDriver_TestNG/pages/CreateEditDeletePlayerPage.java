@@ -111,8 +111,7 @@ public class CreateEditDeletePlayerPage {
 
     public String getUsernameFieldValue() {
         WebElement usernameFieldValue = driver.findElement(By.id("ff14642ac1c__us_login"));
-        String text = usernameFieldValue.getText();
-       return text;
+        return  usernameFieldValue.getText();
     }
 
     public String getEmailFieldValue() {
