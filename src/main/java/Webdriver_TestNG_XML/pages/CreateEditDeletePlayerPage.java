@@ -166,7 +166,7 @@ public class CreateEditDeletePlayerPage {
         driver.findElement(By.xpath(".//tr[.//a[text()='" + username + "']]//img[@alt='Delete']")).click();
     }
 
-    public void alertPopup() {
+    public void alertPopupAccept() {
         Alert alert = driver.switchTo().alert();
         String alertTest = alert.getText();
         alert.accept();

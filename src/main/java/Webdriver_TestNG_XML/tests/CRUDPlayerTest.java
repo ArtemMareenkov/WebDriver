@@ -126,7 +126,7 @@ public class CRUDPlayerTest {
     @Test
     public void deletePlayesTest(String delete, String username){
         createEditDeletePlayerPage.setSearchDeletePlayer(username);
-        createEditDeletePlayerPage.alertPopup();
+        createEditDeletePlayerPage.alertPopupAccept();
     }
     @AfterTest
     public void afterTest(){
