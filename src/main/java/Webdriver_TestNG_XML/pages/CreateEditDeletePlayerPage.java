@@ -42,7 +42,7 @@ public class CreateEditDeletePlayerPage {
 
     @FindBy (xpath = ".//a[@href='http://80.92.229.236:81/players/insert']/img")
     private WebElement insertButton;
-    public void insertButtonClick(String insert) {
+    public void insertButtonClick() {
         insertButton.click();
     }
 
@@ -109,7 +109,7 @@ public class CreateEditDeletePlayerPage {
     }
    @FindBy(xpath = ".//input[@name='button_save']")
     private WebElement saveButtonClick;
-    public void saveButtonClick(String save) {
+    public void saveButtonClick() {
         saveButtonClick.click();
     }
     

@@ -61,7 +61,7 @@ public class CRUDPlayerTest {
     }
     @Test (dataProvider = "createPlayerData")
     public void createPlayerTest(String insert,String username, String email, String password, String confirmpassword,  String firstname, String lastname, String city, String address, String phone, String save){
-        createEditDeletePlayerPage.insertButtonClick(insert);
+        createEditDeletePlayerPage.insertButtonClick();
         createEditDeletePlayerPage.setUsernameValue(username);
         createEditDeletePlayerPage.setEmailValue(email);
         createEditDeletePlayerPage.setPasswordValue(password);
@@ -71,7 +71,7 @@ public class CRUDPlayerTest {
         createEditDeletePlayerPage.setCityValue(city);
         createEditDeletePlayerPage.setAddressValue(address);
         createEditDeletePlayerPage.setPhoneValue(phone);
-        createEditDeletePlayerPage.saveButtonClick(save);
+        createEditDeletePlayerPage.saveButtonClick();
         String actualUsername = createEditDeletePlayerPage.getUsernameFieldValue();
         softAssert.assertEquals(actualUsername,username,"Wrong username field value");
         String actualEmail = createEditDeletePlayerPage.getEmailFieldValue();
@@ -102,7 +102,7 @@ public class CRUDPlayerTest {
         createEditDeletePlayerPage.setCityValue(city);
         createEditDeletePlayerPage.setAddressValue(address);
         createEditDeletePlayerPage.setPhoneValue(phone);
-        createEditDeletePlayerPage.saveButtonClick(save);
+        createEditDeletePlayerPage.saveButtonClick();
 
         String actualEmail = createEditDeletePlayerPage.getEmailFieldValue();
         softAssert.assertEquals(actualEmail,email,"Wrong email field value");
