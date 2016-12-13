@@ -1,5 +1,6 @@
 package Webdriver_TestNG_XML.pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 /**
- * Created by artem on 11.12.2016.
+ * Created by Artem Mareenkov on 11.12.2016.
  */
 public class CreateEditDeletePlayerPage {
 
@@ -41,7 +42,7 @@ public class CreateEditDeletePlayerPage {
 
     @FindBy (xpath = ".//a[@href='http://80.92.229.236:81/players/insert']/img")
     private WebElement insertButton;
-    public void insertButtonClick() {
+    public void insertButtonClick(String insert) {
         insertButton.click();
     }
 
@@ -55,7 +56,7 @@ public class CreateEditDeletePlayerPage {
    WebElement inputEmail;
     public void setEmailValue(String email) {
         inputEmail.clear();
-        inputEmail.sendKeys(email);
+        inputEmail.sendKeys(email + "@Yaho.com");
     }
 
     @FindBy(id = "ff14642ac1c__us_password")
@@ -64,6 +65,7 @@ public class CreateEditDeletePlayerPage {
         inputPassword.clear();
         inputPassword.sendKeys(password);
     }
+
     @FindBy(id = "ff14642ac1c__confirm_password")
     private WebElement inputConfirmPassword;
     public void setConfirmPasswordValue(String confirmpassword) {
@@ -107,17 +109,17 @@ public class CreateEditDeletePlayerPage {
     }
    @FindBy(xpath = ".//input[@name='button_save']")
     private WebElement saveButtonClick;
-    public void saveButtonClick() {
+    public void saveButtonClick(String save) {
         saveButtonClick.click();
     }
     
     @FindBy(id = "723a925886__login")
-    private WebElement inputSearchPlayer;
+    public WebElement inputSearchPlayer;
     public void setSearchEditPlayer(String username) {
-    inputSearchPlayer.clear();
-    inputSearchPlayer.sendKeys(username);
-    driver.findElement(By.name("search")).click();
-    driver.findElement(By.xpath(".//tr[.//a[text()='" + username + "']]//img[@alt='Edit']")).click();
+      inputSearchPlayer.clear();
+      inputSearchPlayer.sendKeys(username);
+      driver.findElement(By.name("search")).click();
+      driver.findElement(By.xpath(".//tr[.//a[text()='" + username + "']]//img[@alt='Edit']")).click();
     }
 
 
@@ -137,5 +139,36 @@ public class CreateEditDeletePlayerPage {
         WebElement firstNameFieldElement = driver.findElement(By.id("ff14642ac1c__us_fname"));
         String firstNameField = firstNameFieldElement.getText();
         return firstNameField;
+    }
+
+    public String getLastNameFieldValue() {
+        WebElement lastNameElement = driver.findElement(By.id("ff14642ac1c__us_lname"));
+        String lastNameField = lastNameElement.getText();
+        return lastNameField;
+    }
+
+    public String getCityFieldValue() {
+        WebElement cityFieldElement = driver.findElement(By.id("ff14642ac1c__us_city"));
+        String cityField = cityFieldElement.getText();
+        return cityField;
+    }
+
+    public String getAddressFieldValue() {
+        WebElement addressFiedlElenment = driver.findElement(By.id("ff14642ac1c__us_address"));
+        String addressField = addressFiedlElenment.getText();
+        return addressField;
+    }
+
+    public void setSearchDeletePlayer(String username) {
+        inputSearchPlayer.clear();
+        inputSearchPlayer.sendKeys(username);
+        driver.findElement(By.name("search")).click();
+        driver.findElement(By.xpath(".//tr[.//a[text()='" + username + "']]//img[@alt='Delete']")).click();
+    }
+
+    public void alertPopup() {
+        Alert alert = driver.switchTo().alert();
+        String alertTest = alert.getText();
+        alert.accept();
     }
 }
