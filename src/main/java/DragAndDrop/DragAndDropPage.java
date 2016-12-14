@@ -16,7 +16,7 @@ import java.io.FileReader;
 public class DragAndDropPage {
 
     private WebDriver driver;
-    private static String URL = "D:\\Users\\artem\\Documents\\Documents\\Education\\Idea Project\\WebDriver\\file_for_drag_and_drop\\index.html";
+    private static String URL = "D:\\Users\\Desktop\\Idea Project\\WebDriver\\file_for_drag_and_drop\\index.html";
 
     public DragAndDropPage(WebDriver driver) {
         this.driver=driver;

@@ -19,11 +19,15 @@ public class LoginTest {
 
 
 
-    @BeforeTest
+    @BeforeSuite
     public void beforTest(){
         driver = new FirefoxDriver();
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(driver);
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
         loginPage.open();
     }
 
@@ -45,6 +49,7 @@ public class LoginTest {
         Assert.assertEquals(loginPage.getErrorMessage(), expectedMessage, "Wrong error message");
 
     }
+    @Parameters({"username","password","expectedMessage"})
     @Test
     public void negativeLoginTestWithIncorrectUsername(String username, String password, String expectedMessage){
         loginPage.setUsername(username);
@@ -53,15 +58,15 @@ public class LoginTest {
         Assert.assertEquals(loginPage.getErrorMessage(),expectedMessage,"Wrong error message");
 
     }
+    @Parameters ({"username","password","expectedMessage"})
     @Test
     public void emptyUsernameAndPasswordFieldTest(String username,String password, String expectedMessage){
         loginPage.setUsername(username);
         loginPage.setPassoword(password);
         loginPage.loginButtobClick();
         Assert.assertEquals(loginPage.getErrorMessage(),expectedMessage,"Wrong error message");
-
     }
-@AfterTest
+@AfterSuite
     public void afterTest(){
         driver.quit();
 }

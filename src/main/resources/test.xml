@@ -6,7 +6,11 @@
     <parameter name="password" value="123"/>
     <parameter name="title" value="Players"/>
     <classes>
-        <class name="Webdriver_TestNG_XML.tests.LoginTest"/>
+        <class name="Webdriver_TestNG_XML.tests.LoginTest">
+            <methods>
+                <include name="positiveLoginTest"></include>
+            </methods>
+        </class>
     </classes>
     </test>
 
@@ -15,23 +19,37 @@
     <parameter name="password" value="4321"/>
      <parameter name="expectedMessage" value="Invalid username or password"/>
         <classes>
-            <class name="Webdriver_TestNG_XML.tests.LoginTest"/>
+            <class name="Webdriver_TestNG_XML.tests.LoginTest">
+                <methods>
+                    <include name="negtiveLoginTestWithIncorrectPassword"/>
+                </methods>
+            </class>
         </classes>
     </test>
+
     <test name="negtivePassowrdTest">
         <parameter name="username" value="ggahhdmin"/>
         <parameter name="password" value="4321"/>
         <parameter name="expectedMessage" value="Invalid username or password"/>
         <classes>
-            <class name="Webdriver_TestNG_XML.tests.LoginTest"/>
+            <class name="Webdriver_TestNG_XML.tests.LoginTest">
+                <methods>
+                    <include name="negativeLoginTestWithIncorrectUsername"/>
+                </methods>
+            </class>
         </classes>
     </test>
+
     <test name="emptyUsernmaeAndPasswordFieldTest">
         <parameter name="username" value=""/>
         <parameter name="password" value=""/>
         <parameter name="expectedMessage" value="Value is required and can't be empty"/>
         <classes>
-            <class name="Webdriver_TestNG_XML.tests.LoginTest"/>
+            <class name="Webdriver_TestNG_XML.tests.LoginTest">
+                <methods>
+                    <include name="emptyUsernameAndPasswordFieldTest"/>
+                </methods>
+            </class>
         </classes>
     </test>
 
